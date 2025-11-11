@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALLSIM — The On-Chain Sandbox</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, #0b0b0b 0%, #000 100%);
+      font-family: 'Press Start 2P', monospace;
+      color: #00ff9d;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .content {
+      text-align: center;
+      padding-top: 60px;
+      z-index: 2;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #00ff9d;
+      text-shadow: 0 0 10px #00ff9d, 0 0 30px #00ffaa;
+      animation: flicker 2.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { opacity: 0.9; text-shadow: 0 0 5px #00ffaa, 0 0 10px #00ff9d; }
+      to { opacity: 1; text-shadow: 0 0 20px #00ffaa, 0 0 50px #00ff9d; }
+    }
+
+    h2 {
+      color: #58ffc6;
+      font-size: 0.8rem;
+      margin-top: 20px;
+    }
+
+    .ca-box {
+      font-size: 0.7rem;
+      border: 1px solid #00ff9d;
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 5px;
+      margin: 25px auto;
+      box-shadow: 0 0 15px rgba(0,255,180,0.4);
+    }
+
+    .btn {
+      display: inline-block;
+      background: #00ff9d;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(0,255,180,0.3);
+      transition: 0.3s;
+      font-size: 0.7rem;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,255,180,0.6);
+    }
+
+    .subtitle {
+      color: #58ffc6;
+      font-size: 0.75rem;
+      margin-top: 25px;
+      letter-spacing: 1px;
+    }
+
+    /* === Анимация блоков === */
+    .grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .block {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: rgba(0,255,150,0.4);
+      box-shadow: 0 0 6px #00ffaa;
+      animation: moveBlock 6s infinite linear;
+    }
+
+    @keyframes moveBlock {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.8; }
+      50% { transform: translateY(50px) translateX(30px) rotate(45deg); opacity: 0.6; }
+      100% { transform: translateY(-50px) translateX(-30px) rotate(0deg); opacity: 0.9; }
+    }
+
+    /* === Текстовые блоки === */
+    .text-section {
+      position: relative;
+      margin-top: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      z-index: 5;
+    }
+
+    .text-block {
+      background: rgba(0,255,150,0.05);
+      border: 1px solid rgba(0,255,150,0.2);
+      max-width: 850px;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,255,150,0.1);
+      color: #7affb9;
+      font-size: 0.75rem;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .text-block h3 {
+      color: #00ffaa;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" id="grid"></div>
+
+  <div class="content">
+    <h1>ALLSIM</h1>
+    <h2>The On-Chain Sandbox</h2>
+    <div class="ca-box">CA: SOON</div>
+    <a href="https://x.com/i/communities/1988030401877541331" target="_blank" class="btn">Join X Community</a>
+    <div class="subtitle">Everything can be simulated.</div>
+  </div>
+
+  <div class="text-section">
+    <div class="text-block">
+      <h3>BUILD ON SOLANA</h3>
+      <p>Create dynamic on-chain worlds. Each interaction, block and transaction is part of a living simulation built by users — powered by Solana speed.</p>
+    </div>
+    <div class="text-block">
+      <h3>PLAY. CODE. TRADE.</h3>
+      <p>AllSim lets you build and play with simple economic or social experiments. Every simulation becomes a tradable NFT-script.</p>
+    </div>
+    <div class="text-block">
+      <h3>RETRO-FUTURE VISION</h3>
+      <p>Inspired by early SimCity and terminal aesthetics, AllSim brings back the joy of experimentation — pixel by pixel, block by block.</p>
+    </div>
+  </div>
+
+  <script>
+    const grid = document.getElementById("grid");
+    const blockCount = 150;
+
+    for (let i = 0; i < blockCount; i++) {
+      const b = document.createElement("div");
+      b.classList.add("block");
+      b.style.left = Math.random() * 100 + "%";
+      b.style.top = Math.random() * 100 + "%";
+      b.style.animationDelay = Math.random() * 5 + "s";
+      b.style.animationDuration = 3 + Math.random() * 6 + "s";
+      b.style.opacity = 0.4 + Math.random() * 0.6;
+      grid.appendChild(b);
+    }
+  </script>
+</body>
+</html>
